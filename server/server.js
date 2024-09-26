@@ -1,7 +1,7 @@
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
-const axios = require('axios');
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import axios from 'axios';
 
 const app = express();
 const server = http.createServer(app);
@@ -15,7 +15,7 @@ const io = new Server(server, {
 
 async function fetchImageUrls(text) {
     try {
-        const response = await axios.post('https://1c28-34-142-169-171.ngrok-free.app/image-urls/', {
+        const response = await axios.post('https://8000-01j8qvyr2fk35dcns1fa7gyq75.cloudspaces.litng.ai/image-urls/', {
             text_paragraph: text
         });
 
