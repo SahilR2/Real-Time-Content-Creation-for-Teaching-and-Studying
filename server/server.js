@@ -1,12 +1,8 @@
-// const express = require('express');
-// const http = require('http');
-// const { Server } = require('socket.io');
-// const axios = require('axios');
-import express from 'express'
-import http from 'http'
-import { Server } from 'socket.io'
-import axios from 'axios';
-// import { app } from './app.js';
+const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
+const axios = require('axios');
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -19,7 +15,7 @@ const io = new Server(server, {
 
 async function fetchImageUrls(text) {
     try {
-        const response = await axios.post('https://ae73-50-17-79-153.ngrok-free.app/image-urls/', {
+        const response = await axios.post('https://1c28-34-142-169-171.ngrok-free.app/image-urls/', {
             text_paragraph: text
         });
 
@@ -39,18 +35,18 @@ async function fetchImageUrls(text) {
 io.on('connection', (socket) => {
     console.log(`New client connected: ${socket.id}`);
 
-    // socket.on('join', (room) => {
-    //     console.log(`Client ${socket.id} joined room: ${room}`);
-    //     console.log(`Timestamp: ${new Date().toISOString()}`);
+    socket.on('join', (room) => {
+        console.log(`Client ${socket.id} joined room: ${room}`);
+        console.log(`Timestamp: ${new Date().toISOString()}`);
 
-    //     // If you want to actually join a room:
-    //     // socket.join(room);
-    // });
+        // If you want to actually join a room:
+        // socket.join(room);
+    });
 
-    // socket.on('hello', (name) => {
-    //     console.log(`Client ${socket.id} said hello to ${name}`);
-    //     socket.emit('hello', 'Hello from server!');
-    // });
+    socket.on('hello', (name) => {
+        console.log(`Client ${socket.id} said hello to ${name}`);
+        socket.emit('hello', 'Hello from server!');
+    });
 
     socket.on('transcript', async (text) => {
         console.log(`Received transcript from ${socket.id}: ${text}`);
@@ -74,8 +70,7 @@ io.on('connection', (socket) => {
         console.log(`Client ${socket.id} disconnected. Reason: ${reason}`);
     });
 });
-export default server
 
-server.listen(3002, () => {
-    console.log("Server listening on http://localhost:3002");
+server.listen(3000, () => {
+    console.log("Server listening on http://localhost:3000");
 });
