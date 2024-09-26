@@ -2,7 +2,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { Button } from "@mui/material";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import Group3 from "../components/group3";
 import Footer from "../components/footer";
 import { PlusIcon } from '@heroicons/react/24/solid';

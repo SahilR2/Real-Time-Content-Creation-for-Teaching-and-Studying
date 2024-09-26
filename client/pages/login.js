@@ -1,60 +1,117 @@
-import InputField from "../components/InputField";
-import LoginButtons from "../components/LoginButton";
-import PropTypes from "prop-types";
+import { useCallback } from "react";
+import { TextField, Button } from "@mui/material";
+import { useRouter } from "next/router";
 
-const Login = ({ onClose }) => {
+const Login = () => {
+  const router = useRouter();
+
+  // Redirect to landing page on login button click
+  const handleLoginClick = useCallback(() => {
+    router.push("/landing-page");
+  }, [router]);
+  const handleLoginClick1 = useCallback(() => {
+    router.push("/sign-up");
+  }, [router]);
+
   return (
-    <div className="w-full h-[982px]  items-center justify-center relative bg-gray1-800 overflow-hidden leading-[normal] tracking-[normal] text-center text-14xl-4 text-white font-inter mq450:h-auto mq450:min-h-[982]">
-      <div className="absolute top-[74px] left-[1081px] [filter:blur(78.89px)] rounded-[19720.25px] bg-moccasin-200 w-[426px] h-[426px] overflow-hidden mix-blend-normal" />
-      <div className="absolute top-[calc(50%_-_385px)] left-[calc(50%_-_502px)] [backdrop-filter:blur(50.84px)] rounded-[41.79px] bg-dimgray w-[979px] overflow-hidden flex flex-row items-start justify-start pt-6 pb-0 pr-0 pl-[21px] box-border max-w-full max-h-full z-[1]">
-        <div className="flex-1 rounded-[33.43px] bg-gray1-700 overflow-hidden flex flex-col items-center justify-start pt-7 pb-[53px] pr-5 pl-[25px] box-border gap-[42.1px] min-h-[664px] max-w-full">
-          <div className="w-[497px] flex flex-col items-start justify-start gap-[8.4px] max-w-full">
-            <div className="self-stretch flex flex-row items-start justify-start py-0 px-8 box-border max-w-full">
-              <div className="flex-1 relative leading-[53px] font-semibold inline-block max-w-full z-[2] mq450:text-xl mq450:leading-[32px] mq750:text-8xl mq750:leading-[42px]">
-                Log in to your account
-              </div>
-            </div>
-            <div className="self-stretch flex flex-col items-start justify-start max-w-full text-3xl-3 text-lightslategray">
-              <div className="flex flex-row items-start justify-start py-0 px-8">
-                <div className="relative tracking-[-0.01px] leading-[34px] z-[2] mq450:text-lg mq450:leading-[27px]">
-                  Welcome back! Please enter your details.
-                </div>
-              </div>
-              <div className="self-stretch h-[182.4px] flex flex-col items-start justify-start pt-0 px-0 pb-0 box-border gap-[27.9px] max-w-full z-[2] mt-[-2.9px]">
-                <InputField
-                  email="Email"
-                  inputValueWrapperPlacehol="exampl@gmail.com"
-                />
-                <InputField
-                  email="Password"
-                  inputValueWrapperPlacehol="••••••••••"
-                  propHeight="unset"
-                  propPadding="unset"
-                  propMarginTop="unset"
-                  propAlignSelf="stretch"
-                  propFlex="unset"
-                />
-              </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray1-800 text-white relative overflow-hidden">
+      {/* Blurred Circles for background design */}
+      <div className="absolute top-[74px] left-[1081px] blur-[78.89px] rounded-full bg-moccasin-200 w-[426px] h-[426px]" />
+      <div className="absolute top-[475px] left-[-140px] blur-[93.52px] rounded-full bg-moccasin-100 w-[505px] h-[505px]" />
+
+      {/* Logo and Text */}
+      <div className="absolute top-10 flex items-center gap-2">
+        <img
+          className="w-[48.6px] h-[45px]"
+          alt="logo"
+          src="/icon-3.svg"
+        />
+        <a
+          className=" [text-decoration:none] text-lg font-semibold text-[inherit]"
+          href="#"
+        >
+          LOGO
+        </a>
+      </div>
+
+      {/* Space between logo and form */}
+      <div className="mt-20" /> {/* This creates a vertical space */}
+
+      {/* Login form container */}
+      <div className="relative bg-dimgray rounded-[41.79px]  pt-8 pl-8 mb-4 w-[90%] max-w-[900px] z-10">
+        <div className="bg-gray1-700 rounded-[33.43px] p-7 flex flex-col items-center gap-6">
+          <div className="max-w-[600px]">
+            <h1 className="text-4xl text-center font-semibold">Log In </h1>
+            <p className="text-xl text-lightslategray">
+              Welcome back! Please enter your details.
+            </p>
+
+            {/* Form inputs */}
+            <div className="flex flex-col w-full gap-4">
+              <label className="block text-white-300 mb-2" htmlFor="email">
+                Email
+              </label>
+              <TextField
+                placeholder="example@gmail.com"
+                fullWidth
+                variant="outlined"
+                sx={textFieldStyles}
+              />
+              <label className="block text-white-300 mb-2" htmlFor="password">
+                Password
+              </label>
+              <TextField
+                placeholder="••••••••••"
+                fullWidth
+                type="password"
+                variant="outlined"
+                sx={textFieldStyles}
+              />
+              {/* Login Button */}
+              <Button
+                variant="contained"
+                fullWidth
+                sx={buttonStyles}
+                onClick={handleLoginClick}
+              >
+                Log In
+              </Button>
             </div>
           </div>
-          <LoginButtons />
+          <div className="flex justify-center ">
+            <span className="text-white-300">Don't have an account? </span>
+            <span
+              className="text-mediumslateblue cursor-pointer ml-2"
+              onClick={handleLoginClick1}
+            >
+              Sign Up
+            </span>
+          </div>
         </div>
       </div>
-      <img
-        className="absolute top-[38px] left-[165px] w-[48.6px] h-[45px] overflow-hidden mix-blend-normal"
-        alt=""
-        src="/icon-3.svg"
-      />
-      <a className="[text-decoration:none] absolute top-[41px] left-[236px] text-lg leading-[20px] font-semibold text-[inherit] text-left flex items-center w-[61px] h-[39px]">
-        LOGO
-      </a>
-      <footer className="absolute top-[475px] left-[-140px] [filter:blur(93.52px)] rounded-[23377.29px] bg-moccasin-100 w-[505px] h-[505px] overflow-hidden mix-blend-normal z-[2]" />
     </div>
   );
 };
 
-Login.propTypes = {
-  onClose: PropTypes.func,
+// Tailwind CSS-based MUI TextField styling
+const textFieldStyles = {
+  "& fieldset": { borderColor: "#1f1e1a" },
+  "& .MuiInputBase-root": {
+    backgroundColor: "#0c0c0c",
+    borderRadius: "16.72px",
+    fontSize: "19.5px",
+  },
+  "& .MuiInputBase-input": { color: "#5b657e" },
+};
+
+// Tailwind CSS-based MUI Button styling
+const buttonStyles = {
+  textTransform: "none",
+  backgroundColor: "#313131",
+  color: "#fff",
+  height: 56,
+  borderRadius: "11.14px",
+  "&:hover": { background: "#313131" },
 };
 
 export default Login;

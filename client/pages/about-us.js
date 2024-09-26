@@ -1,7 +1,6 @@
-
 import AboutContent from "../components/AboutContent";
 import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 
 const AboutUs = () => {
   return (
@@ -34,13 +33,13 @@ const AboutUs = () => {
         </div>
 
 
-       {/* Main Content */}
-       
-       <AboutContent />
+        {/* Main Content */}
+
+        <AboutContent />
 
 
         {/* footer */}
-       <Footer/>
+        <Footer />
 
       </div>
 

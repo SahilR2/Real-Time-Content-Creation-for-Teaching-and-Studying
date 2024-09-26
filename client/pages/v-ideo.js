@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { io } from "socket.io-client";
 import { PlusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 
 const VIdeo = () => {

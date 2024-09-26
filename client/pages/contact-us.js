@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import Footer from "../components/footer";
 
 
