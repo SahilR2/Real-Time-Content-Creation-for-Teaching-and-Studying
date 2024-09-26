@@ -19,7 +19,7 @@ const io = new Server(server, {
 
 async function fetchImageUrls(text) {
     try {
-        const response = await axios.post('https://1c28-34-142-169-171.ngrok-free.app/image-urls/', {
+        const response = await axios.post('https://ae73-50-17-79-153.ngrok-free.app/image-urls/', {
             text_paragraph: text
         });
 
@@ -76,6 +76,6 @@ io.on('connection', (socket) => {
 });
 export default server
 
-// server.listen(3002, () => {
-//     console.log("Server listening on http://localhost:3002");
-// });
+server.listen(3002, () => {
+    console.log("Server listening on http://localhost:3002");
+});
