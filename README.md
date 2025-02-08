@@ -85,8 +85,8 @@ Figure 1.3 illustrates the central Content Creation User Interface (UI), where e
 ### Backend Development
 
 **Frameworks**
-- Django: Primary framework for building robust and scalable web applications.
-- Flask: Used for rapid prototyping and flexibility.
+- FastAPI
+- Nodejs
 **Database**
 - PostgreSQL: Reliable and scalable database management system for storing and retrieving data efficiently.
 **Real-time Communication**
